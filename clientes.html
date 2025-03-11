@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/clientes.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/icon-nexus-estacione.png" type="image/x-icon" />
+    <title>Cadastro de Clientes</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li class="logo">
+                    <img src="/images/LOGO-NEXUSESTACIONE.png" alt="NEXUS ESTACIONE" />
+                </li>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#vehicles">Clientes</a></li>
+                <li><a href="vagas.html">Vagas</a></li>
+                <li><a href="#reservations">Reservas</a></li>
+                <li><a href="relatorios.html">Relatórios</a></li>
+                <li><a href="#contato.html">Contato</a></li>
+                <li><a href="#support">Suporte</a></li>
+                <li class="user">
+                    <a href="#" onclick="toggleDropdown()">
+                        <i class="fas fa-user"></i> Usuário
+                    </a>
+                    <ul class="dropdown" id="userDropdown">
+                        <li><a href="#trocar-usuario">Trocar Usuário</a></li>
+                        <li><a href="#logout">Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <form id="client-form" aria-label="Formulário de Cadastro de Clientes">
+                <input type="text" id="nome" placeholder="Nome Completo" required aria-label="Nome do cliente" />
+                <input type="text" id="cpf" placeholder="CPF" required aria-label="CPF do cliente" />
+                <input type="text" id="endereco" placeholder="Endereço" required aria-label="Endereço do cliente" />
+                <input type="text" id="telefone" placeholder="Telefone" required aria-label="Telefone do cliente" />
+                <input type="email" id="email" placeholder="Email" required aria-label="Email do cliente" />
+                <button type="submit">Cadastrar Cliente</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Clientes Cadastrados</h2>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar clientes" aria-label="Campo de Busca" />
+                <button id="searchButton">Buscar</button>
+            </div>
+            <table id="client-list">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Endereço</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Os clientes cadastrados serão exibidos aqui -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="js/clientes.js"></script>
+</body>
+</html>

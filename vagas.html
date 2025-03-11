@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/vagas.css">
+    <link rel="icon" href="images/icon-nexus-estacione.png" type="image/x-icon" />
+    <title>Vagas de Estacionamento</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li class="logo">
+                    <img src="/images/LOGO-NEXUSESTACIONE.png" alt="NEXUS ESTACIONE" />
+                </li>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="vagas.html">Vagas</a></li>
+                <li><a href="#reservations">Reservas</a></li>
+                <li><a href="relatorios.html">Relatórios</a></li>
+                <li><a href="#contact">Contato</a></li>
+                <li><a href="#support">Suporte</a></li>
+                <li class="user">
+                    <a href="#" onclick="toggleDropdown()">
+                        <i class="fas fa-user"></i> Usuário
+                    </a>
+                    <ul class="dropdown" id="userDropdown">
+                        <li><a href="#trocar-usuario">Trocar Usuário</a></li>
+                        <li><a href="#logout">Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="vaga-container">
+            <!-- Vagas serão geradas aqui pelo JavaScript -->
+        </div>
+
+        <!-- Modal para inserir dados do veículo -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h2>Registrar Veículo</h2>
+                <form id="vehicle-form">
+                    <label for="tipo">Tipo:</label>
+                    <input type="text" id="tipo" required>
+                    <label for="modelo">Modelo:</label>
+                    <input type="text" id="modelo" required>
+                    <label for="placa">Placa:</label>
+                    <input type="text" id="placa" required>
+                    <label for="cor">Cor:</label>
+                    <input type="text" id="cor" required>
+                    <label for="proprietario">Proprietário:</label>
+                    <input type="text" id="proprietario" required>
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="js/vagas.js"></script>
+</body>
+</html>
