@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const vehicleForm = document.getElementById("vehicle-form");
-  const vehicleList = document.getElementById("vehicle-list").getElementsByTagName("tbody")[0];
+  const vehicleList = document
+    .getElementById("vehicle-list")
+    .getElementsByTagName("tbody")[0];
   const modal = document.getElementById("myModal");
   const modalModelo = document.getElementById("modal-modelo");
   const modalPlaca = document.getElementById("modal-placa");
@@ -12,16 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const searchButton = document.getElementById("searchButton");
 
-  // Função para carregar veículos do Local Storage
   const loadVehicles = () => {
-    vehicleList.innerHTML = ''; // Limpa a tabela antes de recarregar
+    vehicleList.innerHTML = "";
     const vehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
     vehicles.forEach((vehicle) => {
       addVehicleToTable(vehicle);
     });
   };
 
-  // Função para adicionar um veículo à tabela
   const addVehicleToTable = (vehicle) => {
     const newRow = vehicleList.insertRow();
     newRow.innerHTML = `
@@ -64,31 +64,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.showExitModal = (button) => {
     const row = button.closest("tr");
-    const tipo = row.cells[0].innerText; // Tipo na coluna 0
-    const modelo = row.cells[1].innerText; // Modelo na coluna 1
-    const placa = row.cells[2].innerText; // Placa na coluna 2
+    const tipo = row.cells[0].innerText;
+    const modelo = row.cells[1].innerText;
+    const placa = row.cells[2].innerText;
     const horaEntrada = new Date(row.dataset.horaEntrada);
 
-    // Define os dados no modal
     modalModelo.innerText = modelo;
     modalPlaca.innerText = placa;
     modalHoraEntrada.innerText = horaEntrada.toLocaleTimeString();
-    modalTipo.innerText = tipo; // Captura o tipo do veículo para o modal
+    modalTipo.innerText = tipo;
 
-    // Cálculo da hora de saída e do total a pagar
     const horaSaida = new Date();
     modalHoraSaida.innerText = horaSaida.toLocaleTimeString();
 
-    // Cálculo do total
     const total = calculateTotal(horaEntrada, horaSaida);
     modalTotal.innerText = total.toFixed(2);
 
-    // Exibe o modal
     modal.style.display = "block";
     modal.dataset.rowIndex = Array.from(vehicleList.rows).indexOf(row);
     modal.dataset.horaEntrada = horaEntrada.toISOString();
 
-    // Configurar o botão de impressão
     modalPrintButton.onclick = () => {
       printReceipt();
     };
@@ -97,18 +92,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const calculateTotal = (entrada, saida) => {
     const millisecondsPerHour = 3600000;
     const millisecondsPerHalfHour = 1800000;
-
     const duration = saida - entrada;
     let total = 0;
 
     if (duration <= millisecondsPerHour) {
-      total = 10; // Primeira hora = R$ 10,00
+      total = 10;
     } else {
       total = 10;
       const remainingTime = duration - millisecondsPerHour;
-
-      const additionalHalfHours = Math.ceil(remainingTime / millisecondsPerHalfHour);
-      total += additionalHalfHours * 3.50; // Cada meia hora adicional = R$ 3,50
+      const additionalHalfHours = Math.ceil(
+        remainingTime / millisecondsPerHalfHour
+      );
+      total += additionalHalfHours * 3.5;
     }
 
     return total;
@@ -209,18 +204,90 @@ document.addEventListener("DOMContentLoaded", () => {
     newWindow.print();
   }
 
-  searchButton.addEventListener("click", () => {
+  searchInput.addEventListener("input", () => {
     const searchTerm = searchInput.value.toLowerCase();
     const rows = vehicleList.getElementsByTagName("tr");
     for (let i = 0; i < rows.length; i++) {
       const modeloCell = rows[i].cells[1].innerText.toLowerCase();
       const placaCell = rows[i].cells[2].innerText.toLowerCase();
-      if (modeloCell.includes(searchTerm) || placaCell.includes(searchTerm)) {
+      const proprietarioCell = rows[i].cells[4].innerText.toLowerCase();
+      if (
+        searchTerm === "" ||
+        modeloCell.includes(searchTerm) ||
+        placaCell.includes(searchTerm) ||
+        proprietarioCell.includes(searchTerm)
+      ) {
         rows[i].style.display = "";
       } else {
         rows[i].style.display = "none";
       }
     }
+  });
+
+  const exportReportButton = document.getElementById("exportReportButton");
+
+  exportReportButton.addEventListener("click", () => {
+    const rows = vehicleList.getElementsByTagName("tr");
+    if (rows.length === 0) {
+      alert("Nenhum veículo estacionado para exportar.");
+      return;
+    }
+
+    let reportContent = `
+    <html>
+      <head>
+        <title>Relatório de Veículos Estacionados</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          h1 { text-align: center; }
+          table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+          th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+          th { background-color: #f2f2f2; }
+          .footer { text-align: center; margin-top: 20px; font-size: 12px; color: #555; }
+        </style>
+      </head>
+      <body>
+        <h1>Nexus Estacione</h1>
+        <p>Relatório de Veículos Estacionados</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Modelo</th>
+              <th>Placa</th>
+              <th>Cor</th>
+              <th>Proprietário</th>
+              <th>Hora de Entrada</th>
+            </tr>
+          </thead>
+          <tbody>
+  `;
+
+    for (let i = 0; i < rows.length; i++) {
+      const cells = rows[i].getElementsByTagName("td");
+      const row = Array.from(cells)
+        .map((cell) => `<td>${cell.innerText}</td>`)
+        .join("");
+      reportContent += `<tr>${row}</tr>`;
+    }
+
+    reportContent += `
+          </tbody>
+        </table>
+        <div class="footer">
+          <p>Relatório gerado por Nexus Estacione em ${new Date().toLocaleString()}</p>
+        </div>
+      </body>
+    </html>
+  `;
+
+    const blob = new Blob([reportContent], { type: "text/html" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "relatorio_veiculos_estacionados.html";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   });
 
   loadVehicles();

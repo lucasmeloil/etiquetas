@@ -1,267 +1,281 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <link rel="icon" href="images/icon-nexus-estacione.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="images/icon-nexus-estacione.png"
+      type="image/x-icon"
+    />
 
     <title>Nexus Estacione</title>
-</head>
-<body>
-   
-
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul class="navbar">
-                <li class="logo">
-                    <img src="/images/LOGO-NEXUSESTACIONE.png" alt="NEXUS ESTACIONE" />
-                </li>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="clientes.html">Clientes</a></li>
-                <li><a href="vagas.html">Vagas</li>
-                <li><a href="#reservations">Reservas</a></li>
-                <li><a href="relatorios.html">Relatórios</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="#support">Suporte</a></li>
-                <li class="user">
-                    <a href="#" onclick="toggleDropdown()">
-                        <i class="fas fa-user"></i> Usuário
-                    </a>
-                    <ul class="dropdown" id="userDropdown">
-                        <li><a href="#trocar-usuario">Trocar Usuário</a></li>
-                        <li><a href="#logout" id="logout-button">Sair</a></li>
-                    </ul>
-                </li>
+      <nav>
+        <ul class="navbar">
+          <li class="logo">
+            <img src="/images/LOGO-NEXUSESTACIONE.png" alt="NEXUS ESTACIONE" />
+          </li>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="clientes.html">Clientes</a></li>
+          <li><a href="vagas.html">Vagas</a></li>
+          <li><a href="#reservations">Reservas</a></li>
+          <li><a href="relatorios.html">Relatórios</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="#support">Suporte</a></li>
+          <li class="user">
+            <a href="#" onclick="toggleDropdown()">
+              <i class="fas fa-user"></i> Usuário
+            </a>
+            <ul class="dropdown" id="userDropdown">
+              <li><a href="#trocar-usuario">Trocar Usuário</a></li>
+              <li><a href="#logout" id="logout-button">Sair</a></li>
             </ul>
-        </nav>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <!-- Conteúdo da página -->
+      <!-- Conteúdo da página -->
     </main>
 
-    
-    
     <script>
-        function toggleDropdown() {
-            const dropdown = document.getElementById("userDropdown");
-            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-        }
+      function toggleDropdown() {
+        const dropdown = document.getElementById("userDropdown");
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      }
 
-        // Fechar o dropdown ao clicar fora
-        window.onclick = function(event) {
-            if (!event.target.matches('.user a')) {
-                const dropdowns = document.getElementsByClassName("dropdown");
-                for (let i = 0; i < dropdowns.length; i++) {
-                    dropdowns[i].style.display = "none";
-                }
-            }
+      // Fechar o dropdown ao clicar fora
+      window.onclick = function (event) {
+        if (!event.target.matches(".user a")) {
+          const dropdowns = document.getElementsByClassName("dropdown");
+          for (let i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].style.display = "none";
+          }
         }
+      };
     </script>
-    
-    
+
     <main>
-        <div class="container">
+      <div class="container">
         <section>
-            <h1>Ralizar entrada de veiculo</h1>
-            <form
-                id="vehicle-form"
-                class="vehicle-form"
-                aria-label="Formulário de Cadastro de Veículos"
-            >
-                <select id="tipo-veiculo" aria-label="Tipo de Veículo" required>
-                    <option value="" disabled selected>Selecione o Tipo de Veículo</option>
-                    <option value="carro">Carro</option>
-                    <option value="moto">Moto</option>
-                    <option value="caminhao">Caminhão</option>
-                    <option value="onibus">Ônibus</option>
-                </select>
-                <input
-                    type="text"
-                    id="modelo"
-                    placeholder="Modelo"
-                    required
-                    aria-required="true"
-                    aria-label="Modelo do veículo"
-                />
-                <input
-                    type="text"
-                    id="placa"
-                    placeholder="Placa"
-                    required
-                    aria-required="true"
-                    aria-label="Placa do veículo"
-                />
-                <input
-                    type="text"
-                    id="cor"
-                    placeholder="Cor"
-                    required
-                    aria-required="true"
-                    aria-label="Cor do veículo"
-                />
-                <input
-                    type="text"
-                    id="proprietario"
-                    placeholder="Proprietário"
-                    required
-                    aria-required="true"
-                    aria-label="Nome do proprietário"
-                />
-                <button type="submit">Adicionar Veículo</button>
-            </form>
+          <h1>Ralizar entrada de veiculo</h1>
+          <form
+            id="vehicle-form"
+            class="vehicle-form"
+            aria-label="Formulário de Cadastro de Veículos"
+          >
+            <select id="tipo-veiculo" aria-label="Tipo de Veículo" required>
+              <option value="" disabled selected>
+                Selecione o Tipo de Veículo
+              </option>
+              <option value="carro">Carro</option>
+              <option value="moto">Moto</option>
+              <option value="caminhao">Caminhão</option>
+              <option value="onibus">Ônibus</option>
+            </select>
+            <input
+              type="text"
+              id="modelo"
+              placeholder="Modelo"
+              required
+              aria-required="true"
+              aria-label="Modelo do veículo"
+            />
+            <input
+              type="text"
+              id="placa"
+              placeholder="Placa"
+              required
+              aria-required="true"
+              aria-label="Placa do veículo"
+            />
+            <input
+              type="text"
+              id="cor"
+              placeholder="Cor"
+              required
+              aria-required="true"
+              aria-label="Cor do veículo"
+            />
+            <input
+              type="text"
+              id="proprietario"
+              placeholder="Proprietário"
+              required
+              aria-required="true"
+              aria-label="Nome do proprietário"
+            />
+            <button type="submit">Adicionar Veículo</button>
+          </form>
         </section>
 
         <section>
-            <h2>Buscar Veículos</h2>
-            <div class="search-container">
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Digite o nome, placa ou veículo"
-                    aria-label="Campo de Busca"
-                />
-                <button id="searchButton" aria-label="Buscar Veículos">Buscar</button>
-            </div>
-            <div id="searchResults" class="search-results" aria-live="polite">
-                <!-- Os resultados da pesquisa serão exibidos aqui -->
-            </div>
+          <h2>Buscar Veículos</h2>
+          <div class="search-container">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Digite o nome, placa ou veículo"
+              aria-label="Campo de Busca"
+            />
+            <button id="searchButton" aria-label="Buscar Veículos">
+              Buscar
+            </button>
+            <button id="exportReportButton" aria-label="Exportar Relatório">
+              Exportar Relatório
+            </button>
+          </div>
+
+          <div id="searchResults" class="search-results" aria-live="polite">
+            <!-- Os resultados da pesquisa serão exibidos aqui -->
+          </div>
         </section>
 
         <script>
-          
-    
-            const searchButton = document.getElementById("searchButton");
-            const searchInput = document.getElementById("searchInput");
-            const searchResults = document.getElementById("searchResults");
-    
-            // Função para buscar veículos
-            function searchVehicles() {
-                const query = searchInput.value.toLowerCase();
-                searchResults.innerHTML = ""; // Limpa resultados anteriores
-    
-                const filteredVehicles = vehicles.filter(vehicle => 
-                    vehicle.name.toLowerCase().includes(query) || 
-                    vehicle.plate.toLowerCase().includes(query)
-                );
-    
-                // Exibe resultados da pesquisa
-                if (filteredVehicles.length > 0) {
-                    filteredVehicles.forEach(vehicle => {
-                        const div = document.createElement("div");
-                        div.textContent = `${vehicle.name} - Placa: ${vehicle.plate}`;
-                        searchResults.appendChild(div);
-                    });
-                } else {
-                    searchResults.textContent = "Nenhum veículo encontrado.";
-                }
+          const searchButton = document.getElementById("searchButton");
+          const searchInput = document.getElementById("searchInput");
+          const searchResults = document.getElementById("searchResults");
+
+          // Função para buscar veículos
+          function searchVehicles() {
+            const query = searchInput.value.toLowerCase();
+            searchResults.innerHTML = ""; // Limpa resultados anteriores
+
+            const filteredVehicles = vehicles.filter(
+              (vehicle) =>
+                vehicle.name.toLowerCase().includes(query) ||
+                vehicle.plate.toLowerCase().includes(query)
+            );
+
+            // Exibe resultados da pesquisa
+            if (filteredVehicles.length > 0) {
+              filteredVehicles.forEach((vehicle) => {
+                const div = document.createElement("div");
+                div.textContent = `${vehicle.name} - Placa: ${vehicle.plate}`;
+                searchResults.appendChild(div);
+              });
+            } else {
+              searchResults.textContent = "Nenhum veículo encontrado.";
             }
-    
-            // Adiciona evento de clique ao botão de busca
-            searchButton.addEventListener("click", searchVehicles);
-    
-            // Permite que a pesquisa seja feita ao pressionar Enter
-            searchInput.addEventListener("keypress", function (event) {
-                if (event.key === "Enter") {
-                    searchVehicles();
-                }
-            });
+          }
+
+          // Adiciona evento de clique ao botão de busca
+          searchButton.addEventListener("click", searchVehicles);
+
+          // Permite que a pesquisa seja feita ao pressionar Enter
+          searchInput.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+              searchVehicles();
+            }
+          });
         </script>
 
         <section>
-            <h2>Veículos Estacionados</h2>
-            <table id="vehicle-list">
-                <thead>
-                  <tr>
-                      <th>Tipo</th>
-                      <th>Modelo</th>
-                      <th>Placa</th>
-                      <th>Cor</th>
-                      <th>Proprietário</th>
-                        <th>Hora de Entrada</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- A lista de veículos estacionados será preenchida aqui -->
-                </tbody>
-            </table>
+          <h2>Veículos Estacionados</h2>
+          <table id="vehicle-list">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Modelo</th>
+                <th>Placa</th>
+                <th>Cor</th>
+                <th>Proprietário</th>
+                <th>Hora de Entrada</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- A lista de veículos estacionados será preenchida aqui -->
+            </tbody>
+          </table>
         </section>
-        </div>
+      </div>
     </main>
 
     <!-- Modal de Saída de Veículo -->
     <div id="myModal" class="modal" aria-hidden="true">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()" aria-label="Fechar">&times;</span>
-            <h2>Saída de Veículo</h2>
-            <p><strong>Tipo de Veículo:</strong> <span id="modal-tipo"></span></p>
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()" aria-label="Fechar"
+          >&times;</span
+        >
+        <h2>Saída de Veículo</h2>
+        <p><strong>Tipo de Veículo:</strong> <span id="modal-tipo"></span></p>
 
-            <p><strong>Modelo:</strong> <span id="modal-modelo"></span></p>
-            <p><strong>Placa:</strong> <span id="modal-placa"></span></p>
-            <p>
-                <strong>Hora de Entrada:</strong>
-                <span id="modal-hora-entrada"></span>
-            </p>
-            <p>
-                <strong>Hora de Saída:</strong> <span id="modal-hora-saida"></span>
-            </p>
-            <p><strong>Total a Pagar:</strong> R$ <span id="modal-total"></span></p>
-            <button onclick="finalizeExit()">Finalizar Saída</button>
-            <button onclick="closeModal()">Cancelar</button>
+        <p><strong>Modelo:</strong> <span id="modal-modelo"></span></p>
+        <p><strong>Placa:</strong> <span id="modal-placa"></span></p>
+        <p>
+          <strong>Hora de Entrada:</strong>
+          <span id="modal-hora-entrada"></span>
+        </p>
+        <p>
+          <strong>Hora de Saída:</strong> <span id="modal-hora-saida"></span>
+        </p>
+        <p><strong>Total a Pagar:</strong> R$ <span id="modal-total"></span></p>
+        <button onclick="finalizeExit()">Finalizar Saída</button>
+        <button onclick="closeModal()">Cancelar</button>
 
-            <!-- Seção do cupom fiscal -->
-            <div id="cupom-fiscal" style="display: none">
-                <h3>Cupom Fiscal</h3>
-                <p><strong>Empresa:</strong> Nexus Estacione</p>
-                <p>
-                    <strong>Endereço:</strong> Rua de Todos os Santos, nº 25, Itabaiana-SE
-                </p>
-                <p><strong>Modelo:</strong> <span id="cupom-modelo"></span></p>
-                <p><strong>Placa:</strong> <span id="cupom-placa"></span></p>
-                <p>
-                    <strong>Hora de Entrada:</strong>
-                    <span id="cupom-hora-entrada"></span>
-                </p>
-                <p>
-                    <strong>Hora de Saída:</strong> <span id="cupom-hora-saida"></span>
-                </p>
-                <p>
-                    <strong>Data de Saída:</strong> <span id="cupom-data-saida"></span>
-                </p>
-                <p>
-                    <strong>Total a Pagar:</strong> R$ <span id="cupom-total"></span>
-                </p>
-            </div>
+        <!-- Seção do cupom fiscal -->
+        <div id="cupom-fiscal" style="display: none">
+          <h3>Cupom Fiscal</h3>
+          <p><strong>Empresa:</strong> Nexus Estacione</p>
+          <p>
+            <strong>Endereço:</strong> Rua de Todos os Santos, nº 25,
+            Itabaiana-SE
+          </p>
+          <p><strong>Modelo:</strong> <span id="cupom-modelo"></span></p>
+          <p><strong>Placa:</strong> <span id="cupom-placa"></span></p>
+          <p>
+            <strong>Hora de Entrada:</strong>
+            <span id="cupom-hora-entrada"></span>
+          </p>
+          <p>
+            <strong>Hora de Saída:</strong> <span id="cupom-hora-saida"></span>
+          </p>
+          <p>
+            <strong>Data de Saída:</strong> <span id="cupom-data-saida"></span>
+          </p>
+          <p>
+            <strong>Total a Pagar:</strong> R$ <span id="cupom-total"></span>
+          </p>
         </div>
+      </div>
     </div>
 
     <!-- Modal de Recibo de Entrada -->
     <div id="entradaModal" class="modal" aria-hidden="true">
-        <div class="modal-content">
-            <span class="close" onclick="closeEntradaModal()" aria-label="Fechar">&times;</span>
-            <h2>Recibo de Entrada</h2>
-            <p><strong>Empresa:</strong> Nexus Estacione</p>
-            <p>
-                <strong>Endereço:</strong> Rua de Todos os Santos, nº 25, Itabaiana-SE
-            </p>
-            <p><strong>Modelo:</strong> <span id="entrada-modelo"></span></p>
-            <p><strong>Placa:</strong> <span id="entrada-placa"></span></p>
-            <p><strong>Cor:</strong> <span id="entrada-cor"></span></p>
-            <p>
-                <strong>Proprietário:</strong> <span id="entrada-proprietario"></span>
-            </p>
-            <p><strong>Hora de Entrada:</strong> <span id="entrada-hora"></span></p>
-            <p><strong>Data de Entrada:</strong> <span id="entrada-data"></span></p>
-            <button onclick="printEntryReceipt()">Imprimir Recibo</button>
-            <button onclick="closeEntradaModal()">Fechar</button>
-        </div>
+      <div class="modal-content">
+        <span class="close" onclick="closeEntradaModal()" aria-label="Fechar"
+          >&times;</span
+        >
+        <h2>Recibo de Entrada</h2>
+        <p><strong>Empresa:</strong> Nexus Estacione</p>
+        <p>
+          <strong>Endereço:</strong> Rua de Todos os Santos, nº 25, Itabaiana-SE
+        </p>
+        <p><strong>Modelo:</strong> <span id="entrada-modelo"></span></p>
+        <p><strong>Placa:</strong> <span id="entrada-placa"></span></p>
+        <p><strong>Cor:</strong> <span id="entrada-cor"></span></p>
+        <p>
+          <strong>Proprietário:</strong> <span id="entrada-proprietario"></span>
+        </p>
+        <p><strong>Hora de Entrada:</strong> <span id="entrada-hora"></span></p>
+        <p><strong>Data de Entrada:</strong> <span id="entrada-data"></span></p>
+        <button onclick="printEntryReceipt()">Imprimir Recibo</button>
+        <button onclick="closeEntradaModal()">Fechar</button>
+      </div>
     </div>
 
     <script src="js/app.js"></script>
     <!-- Adicione seu script aqui -->
-</body>
+  </body>
 </html>
